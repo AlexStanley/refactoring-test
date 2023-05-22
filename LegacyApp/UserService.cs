@@ -60,7 +60,7 @@ namespace LegacyApp
             => string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName);
 
         private bool IsValidEmail(string email)
-            => email.Contains("@") && email.Contains(".");
+            => email.Contains('@') && email.Contains('.');
 
         private int CalculateUserAge(DateTime dateOfUserBirth)
         {
