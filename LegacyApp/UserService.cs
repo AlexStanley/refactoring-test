@@ -4,8 +4,8 @@ namespace LegacyApp
 {
     public class UserService
     {
-        private readonly ClientRepository clientRepository;
-        private readonly UserCreditServiceClient userCreditService;
+        public ClientRepository clientRepository { get; set; }
+        public UserCreditServiceClient userCreditService { get; set; }
 
         public UserService()
         {
