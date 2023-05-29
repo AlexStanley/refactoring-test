@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcService.Protos";
+
+service UserCredit
+{
+    rpc GetCreditLimit(UserCreditRequest) returns (UserCreditResponse);
+}
+
+message UserCreditRequest {
+    string firstname = 1;
+    string surname = 2;
+    google.protobuf.Timestamp dateOfBirth = 3;
+}
+
+message UserCreditResponse {
+    int32 creditLimit = 1;
+}
