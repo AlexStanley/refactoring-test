@@ -7,9 +7,10 @@ namespace LegacyApp
 {
     public partial class UserCreditServiceClient
     {
-       public int GetCreditLimit(string firstNane, string lastName, DateTime dateOfBirth)
+        private readonly string _url = "https://totally-real-service.com/IUserCreditService/GetCreditLimit";
+        public int GetCreditLimit(string firstNane, string lastName, DateTime dateOfBirth)
         {
-            var channel = GrpcChannel.ForAddress("http://totally-real-service.com/IUserCreditService/GetCreditLimit");
+            var channel = GrpcChannel.ForAddress(_url);
             var userClient = new UserCredit.UserCreditClient(channel);
 
             UserCreditRequest request = new UserCreditRequest

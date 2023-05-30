@@ -4,6 +4,11 @@ namespace LegacyApp
 {
     public class UserService
     {
+        private readonly string _veryImportantClient = "VeryImportantClient";
+        private readonly string _importantClient = "ImportantClient";
+        private readonly char _at = '@';
+        private readonly char _dot = '.';
+
         public ClientRepository clientRepository { get; set; }
         public UserCreditServiceClient userCreditService { get; set; }
 
@@ -35,14 +40,14 @@ namespace LegacyApp
                 Surname = lastName
             };
 
-            if (client.Name == "VeryImportantClient")
+            if (client.Name == _veryImportantClient)
                 user.HasCreditLimit = false;
             else
             {
                 user.HasCreditLimit = true;
                 var creditLimit = userCreditService.GetCreditLimit(firstName, lastName, dateOfUserBirth);
 
-                if (client.Name == "ImportantClient")
+                if (client.Name == _importantClient)
                     creditLimit *= 2;
 
                 user.CreditLimit = creditLimit;
@@ -60,7 +65,7 @@ namespace LegacyApp
             => string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName);
 
         private bool IsValidEmail(string email)
-            => email.Contains('@') && email.Contains('.');
+            => email.Contains(_at) && email.Contains(_dot);
 
         private int CalculateUserAge(DateTime dateOfUserBirth)
         {
